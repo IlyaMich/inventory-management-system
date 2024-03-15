@@ -1,4 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
+from app.core.config import settings
 from fastapi import FastAPI
 import os
 
@@ -14,7 +15,8 @@ async def get_database(db_name: str):
     return db.client[db_name]
 
 async def connect_to_mongo():
-    mongo_details = os.getenv("MONGODB_URL", "mongodb://localhost:27017/inventory-mng-local")
+    #mongo_details = os.getenv("MONGODB_URL", "mongodb://localhost:27017/inventory-mng-local")
+    mongo_details = settings.DATABASE_URL
     db.client = AsyncIOMotorClient(mongo_details)
     #db.client = AsyncIOMotorClient("mongodb://localhost:27017/inventory-mng-local")
 

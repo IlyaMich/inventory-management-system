@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from app.dependencies import get_dal_user
+from app.dependencies.db.db import get_dal_user
 from app.schemas.user_schema import UserCreate, UserDisplay, UserUpdate
 from app.db.dal_user import DALUser
 from app.controllers import user_controller
+from ..models.user import User
+from ..dependencies.security.security import get_current_active_user
 
 router = APIRouter()
 
@@ -19,7 +21,7 @@ async def get_user(user_id: str):
     return user
 
 @router.get("/users/")
-async def get_all_users(skip: int = 0, limit: int = 10):
+async def get_all_users(skip: int = 0, limit: int = 10):#, current_user: User = Depends(get_current_active_user)):
     users = await user_controller.get_all_users(skip=skip, limit=limit)
     return users
 

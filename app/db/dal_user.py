@@ -13,6 +13,7 @@ class DALUser(DALGeneric):
         super().__init__(model=User, collection=db["users"])
 
     async def get_user_by_email(self, email: str):
+        logger.info(f'username email: {email}')
         user_document = await self.collection.find_one({"email": email})
         logger.info(user_document)
         if user_document:

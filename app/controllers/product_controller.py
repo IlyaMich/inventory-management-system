@@ -2,7 +2,7 @@ from typing import List
 from fastapi import HTTPException
 from app.db.dal_product import DALProduct
 from app.db.database import get_database
-from app.dependencies import database_name
+from app.dependencies.db.db import database_name
 from app.schemas.product_schema import ProductCreate, ProductUpdate, ProductDisplay
 import logging
 from bson import ObjectId

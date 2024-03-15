@@ -19,7 +19,7 @@ EXPOSE 8000
 ENV MODULE_NAME="main"
 ENV VARIABLE_NAME="app"
 ENV PORT="8000"
-ENV MONGODB_URL="mongodb://localhost:27017/inventory-mng-local"
+#ENV MONGODB_URL="mongodb://localhost:27017/inventory-mng-local"
 
 # Run main.py when the container launches
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

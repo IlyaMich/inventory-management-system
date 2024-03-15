@@ -52,6 +52,20 @@ async def get_user(user_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
+async def get_user_by_email(email: str):
+    db = await get_database("inventory-mng-local")  # Ensure this is awaited
+    dal_user = DALUser(db=db)
+
+    logger.info(f'Trying to find user by email: {email} ')
+
+    try:
+        user = await dal_user.get_user_by_email(email)
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        return serialize_user(user)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 async def delete_user(sale_id: str):
     db = await get_database("inventory-mng-local")  # Ensure this is awaited
     dal_user = DALUser(db=db)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from app.db.dal_sale import DALSale
-from app.dependencies import get_dal_sale
+from app.dependencies.db.db import get_dal_sale
 from app.controllers import sale_controller
 from app.schemas.sale_schema import SaleCreate, SaleUpdate, SaleDisplay
 

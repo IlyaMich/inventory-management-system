@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from app.dependencies import get_dal_product
+from app.dependencies.db.db import get_dal_product
 from app.schemas.product_schema import ProductCreate, ProductDisplay, ProductUpdate
 from app.db.dal_product import DALProduct
 from app.controllers import product_controller

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from app.controllers import transaction_controller
-from app.dependencies import get_dal_transaction
+from app.dependencies.db.db import get_dal_transaction
 from app.db.dal_transaction import DALTransaction
 from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransactionDisplay
 
